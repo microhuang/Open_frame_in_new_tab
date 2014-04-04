@@ -1,0 +1,12 @@
+//#Chrome一个简单拓展，给右键菜单添加一个 在新标签页中打开菜单，
+//#经常在iframe中开发，需要打开新标签页的可能会有用，很简单的代码
+ chrome.contextMenus.create({
+     title: "Open frame in new tab",
+     onclick: function(info, tab){
+         chrome.tabs.create({
+             url: info.frameUrl || info.pageUrl,
+             index: tab.index + 1,
+             selected: true
+         });
+     }
+ });
